@@ -1,5 +1,6 @@
 <?php 
-$text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, aut, explicabo fugiat repellat dolor iure aperiam, sed molestias est deserunt natus inventore incidunt suscipit soluta adipisci esse perferendis accusantium amet."
+$text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, aut, explicabo fugiat repellat dolor iure aperiam, sed molestias est deserunt natus inventore incidunt suscipit soluta adipisci esse perferendis accusantium amet.";
+$censored = $_GET["word"];
 ?>
 
 <!DOCTYPE html>
@@ -11,12 +12,17 @@ $text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
     <title>Bad Words</title>
 </head>
 <body>
-    <p>
-        <strong>Testo:</strong> <?php echo $text ?>
+    <p><strong>Testo:</strong> <?php echo $text ?></p>
+    <p><strong>Lunghezza testo:</strong> <?php echo strlen($text) ?> caratteri</p>
+
+    <p><strong>Testo censurato:</strong>
+        <?php
+        $text_censored = str_replace($censored, "***", $text);
+        echo $text_censored; 
+        ?>
     </p>
-    <p>
-        <strong>Lunghezza testo:</strong> <?php echo strlen($text) ?> caratteri
-    </p>
+    <p><strong>Nuova lunghezza:</strong> <?php echo strlen($text_censored) ?> caratteri</p>
+
 </body>
 </html>
 
